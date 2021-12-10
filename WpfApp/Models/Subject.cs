@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfApp.Model
+namespace WpfApp.Models
 {
     public class Subject : ModelBase
     {
@@ -12,6 +12,9 @@ namespace WpfApp.Model
         private string name;
         private string description;
         private int teacherId;
+
+        private Teacher teacher;
+        private List<Test> tests;
 
         public int Id
         {
@@ -53,12 +56,24 @@ namespace WpfApp.Model
             }
         }
 
-        public Subject(int id, string name, string description, int teacherId)
+        public List<Test> Tests
         {
-            this.id = id;
-            this.name = name;
-            this.description = description;
-            this.teacherId = teacherId;
+            get => tests;
+            set
+            {
+                tests = value;
+                OnPropertyChanged(nameof(Tests));
+            }
         }
+        public Teacher Teacher
+        {
+            get => teacher;
+            set
+            {
+                teacher = value;
+                OnPropertyChanged(nameof(Teacher));
+            }
+        }
+
     }
 }

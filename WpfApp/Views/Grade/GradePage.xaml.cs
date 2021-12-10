@@ -12,19 +12,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp.Views;
+using WpfApp.Models;
+using WpfApp.Services;
+using WpfApp.ViewModels;
 
-namespace WpfApp
+namespace WpfApp.Views.Grade
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for GradePage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class GradePage : Page
     {
-        public MainWindow()
+        public GradePage()
         {
             InitializeComponent();
-            Main.Content = new NavigationPage();
+            DataContext = new GradeViewModel(new Grades(UniversityContext.Instance));
         }
     }
 }

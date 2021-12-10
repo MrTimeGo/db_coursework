@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
-        Title="Course work" Height="720" Width="1080" FontFamily="{StaticResource KyivTypeSans-Regular}" FontWeight="Normal">
+        Title="Course work" Height="720" Width="1080"  FontWeight="Normal" FontFamily="Segoe UI">
     <Window.Background>
         <ImageBrush ImageSource="Resources/main.jpg"/>
     </Window.Background>
@@ -20,10 +20,6 @@
             <ColumnDefinition Width="312"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="140"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
@@ -31,21 +27,8 @@
         </Grid.RowDefinitions>
 
 
-        <TextBlock Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" Margin="0,0,0,72" Text="Grading &amp; control system" FontFamily="{StaticResource KyivTypeSans-Medium}" FontSize="50" TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold"/>
-
-
-        <Button Grid.Column="1" Grid.Row="2" Content="students" Margin="0,0,0,18" FontSize="32"/>
-
-        <Button Grid.Column="1" Grid.Row="3" Content="subjects" Margin="0,0,0,18" FontSize="32"/>
-
-        <Button Grid.Column="1" Grid.Row="4" Content="tests" Width="200" Height="48" FontSize="32"/>
-
-
-        <Button Grid.Column="3" Grid.Row="2" Content="groups" Margin="0,0,0,18" FontSize="32" />
-
-        <Button Grid.Column="3" Grid.Row="3" Content="teachers" Margin="0,0,0,18" FontSize="32"/>
-
-        <Button Grid.Column="3" Grid.Row="4" Content="grades" Margin="0,0,0,18" FontSize="32" />
+        <Frame x:Name="Main" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5"
+               NavigationUIVisibility="Hidden"/>
 
 
         <TextBlock Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="6" Text="A.V. Petselia" TextAlignment="Center" FontSize="21" Foreground="#FF7D6972"/>

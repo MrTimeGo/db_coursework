@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfApp.Model
+namespace WpfApp.Models
 {
     public class Grade : ModelBase
     {
@@ -13,6 +13,10 @@ namespace WpfApp.Model
         private int studentId;
         private int verifiedBy;
         private int testId;
+
+        private Student student;
+        private Teacher teacher;
+        private Test test;
 
         public int Id
         {
@@ -64,13 +68,34 @@ namespace WpfApp.Model
             }
         }
 
-        public Grade(int id, int score, int studentId, int verifiedBy, int testId)
+        public Student Student
         {
-            this.id = id;
-            this.score = score;
-            this.studentId = studentId;
-            this.verifiedBy = verifiedBy;
-            this.testId = testId;
+            get => student;
+            set
+            {
+                student = value;
+                OnPropertyChanged(nameof(Student));
+            }
+        }
+
+        public Teacher Teacher
+        {
+            get => teacher;
+            set
+            {
+                teacher = value;
+                OnPropertyChanged(nameof(Teacher));
+            }
+        }
+
+        public Test Test
+        {
+            get => test;
+            set
+            {
+                test = value;
+                OnPropertyChanged(nameof(Test));
+            }
         }
     }
 }

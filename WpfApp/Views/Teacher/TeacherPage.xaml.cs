@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp.Views;
 
-namespace WpfApp
+namespace WpfApp.Views.Teacher
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for TeacherPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class TeacherPage : Page
     {
-        public MainWindow()
+        public TeacherPage()
         {
             InitializeComponent();
-            Main.Content = new NavigationPage();
         }
     }
 }

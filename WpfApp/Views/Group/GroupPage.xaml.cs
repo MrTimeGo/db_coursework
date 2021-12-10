@@ -12,19 +12,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp.Views;
+using WpfApp.Models;
+using WpfApp.Services;
+using WpfApp.ViewModels;
 
-namespace WpfApp
+namespace WpfApp.Views.Group
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for GroupPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class GroupPage : Page
     {
-        public MainWindow()
+        public GroupPage()
         {
             InitializeComponent();
-            Main.Content = new NavigationPage();
+            DataContext = new GroupViewModel(new Groups(UniversityContext.Instance));
         }
     }
 }

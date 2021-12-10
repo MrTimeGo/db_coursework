@@ -12,18 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp.Services;
+using WpfApp.ViewModels;
+using WpfApp.Models;
 
-namespace WpfApp.View
+namespace WpfApp.Views.Student
 {
     /// <summary>
-    /// Interaction logic for TeacherPage.xaml
+    /// Interaction logic for StudentPage.xaml
     /// </summary>
-    public partial class TeacherPage : Page
+    public partial class StudentPage : Page
     {
-        public TeacherPage()
+        public StudentPage()
         {
             InitializeComponent();
-            DataContext = new WpfApp.ViewModel.TeacherViewModel();
+            DataContext = new StudentViewModel(new Students(UniversityContext.Instance));
         }
+
     }
 }

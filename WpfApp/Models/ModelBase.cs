@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 
-namespace WpfApp.Model
+namespace WpfApp.Models
 {
     public class ModelBase : INotifyPropertyChanged
     {

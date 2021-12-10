@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfApp.Model
+namespace WpfApp.Models
 {
     public enum WorkType
     {
@@ -25,6 +25,9 @@ namespace WpfApp.Model
         private int subjectId;
         private DateTime eventDate;
         private WorkType workType;
+
+        private Subject subject;
+        private List<Grade> grades;
 
         public int Id
         {
@@ -86,14 +89,25 @@ namespace WpfApp.Model
             }
         }
 
-        public Test(int id, string theme, int maxScore, int subjectId, DateTime eventDate, WorkType workType)
+        public List<Grade> Grades
         {
-            this.id = id;
-            this.theme = theme;
-            this.maxScore = maxScore;
-            this.subjectId = subjectId;
-            this.eventDate = eventDate;
-            this.workType = workType;
+            get => grades;
+            set
+            {
+                grades = value;
+                OnPropertyChanged(nameof(Grades));
+            }
         }
+
+        public Subject Subject
+        {
+            get => subject;
+            set
+            {
+                subject = value;
+                OnPropertyChanged(nameof(Subject));
+            }
+        }
+
     }
 }

@@ -4,8 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NpgsqlTypes;
 
-namespace WpfApp.Model
+namespace WpfApp.Models
 {
     public enum Position
     {
@@ -20,6 +21,9 @@ namespace WpfApp.Model
         private int id;
         private string fullName;
         private Position position;
+
+        List<Grade> grades;
+        List<Subject> subjects;
 
         public int Id
         {
@@ -51,11 +55,25 @@ namespace WpfApp.Model
             }
         }
 
-        public Teacher(int id, string fullName, Position position)
+        public List<Grade> Grades
         {
-            Id = id;
-            FullName = fullName;
-            Position = position;
+            get => grades;
+            set
+            {
+                grades = value;
+                OnPropertyChanged(nameof(Grades));
+            }
         }
+
+        public List<Subject> Subjects
+        {
+            get => subjects;
+            set
+            {
+                subjects = value;
+                OnPropertyChanged(nameof(Subjects));
+            }
+        }
+
     }
 }

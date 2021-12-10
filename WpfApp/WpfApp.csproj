@@ -8,25 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Fonts\KyivTypeSans-Medium.ttf" />
-    <None Remove="Fonts\KyivTypeSans-Regular.ttf" />
     <None Remove="Resources\button.png" />
     <None Remove="Resources\main.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Fonts\KyivTypeSans-Medium.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Fonts\KyivTypeSans-Regular.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\button.png" />
-    <Resource Include="Resources\main.jpg" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Model\Repository\" />
+    <Resource Include="Resources\button.png" />
+    <Resource Include="Resources\main.jpg" />
   </ItemGroup>
 
 

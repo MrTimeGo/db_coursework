@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfApp.Model
+namespace WpfApp.Models
 {
     public class Group : ModelBase
     {
@@ -12,6 +12,7 @@ namespace WpfApp.Model
         private string code;
         private DateTime startEducation;
         private DateTime endEducation;
+        private List<Student> students;
 
         public int Id
         {
@@ -53,12 +54,15 @@ namespace WpfApp.Model
             }
         }
 
-        public Group(int id, string code, DateTime startEducation, DateTime endEducation)
+        public List<Student> Students
         {
-            this.id = id;
-            this.code = code;
-            this.startEducation = startEducation;
-            this.endEducation = endEducation;
+            get => students;
+            set
+            {
+                students = value;
+                OnPropertyChanged(nameof(Students));
+            }
         }
+
     }
 }
