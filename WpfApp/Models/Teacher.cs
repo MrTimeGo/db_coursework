@@ -22,7 +22,6 @@ namespace WpfApp.Models
         private string fullName;
         private Position position;
 
-        List<Grade> grades;
         List<Subject> subjects;
 
         public int Id
@@ -55,16 +54,6 @@ namespace WpfApp.Models
             }
         }
 
-        public List<Grade> Grades
-        {
-            get => grades;
-            set
-            {
-                grades = value;
-                OnPropertyChanged(nameof(Grades));
-            }
-        }
-
         public List<Subject> Subjects
         {
             get => subjects;
@@ -75,5 +64,9 @@ namespace WpfApp.Models
             }
         }
 
+        public override string ToString()
+        {
+            return $"{Id}. {FullName}";
+        }
     }
 }

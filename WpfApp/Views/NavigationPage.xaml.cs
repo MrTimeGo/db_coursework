@@ -1,11 +1,11 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using WpfApp.Views.Grade;
-using WpfApp.Views.Group;
-using WpfApp.Views.Student;
-using WpfApp.Views.Subject;
-using WpfApp.Views.Teacher;
-using WpfApp.Views.Test;
+using WpfApp.Views.GradeViews;
+using WpfApp.Views.GroupViews;
+using WpfApp.Views.StudentViews;
+using WpfApp.Views.SubjectViews;
+using WpfApp.Views.TeacherViews;
+using WpfApp.Views.TestViews;
 
 namespace WpfApp.Views
 {

@@ -75,5 +75,9 @@ namespace WpfApp.Models
             }
         }
 
+        public override string ToString()
+        {
+            return $"{Id}. {Name}";
+        }
     }
 }

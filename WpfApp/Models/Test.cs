@@ -6,17 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp.Models
 {
-    public enum WorkType
-    {
-        Lecture,
-        Practice,
-        Seminar,
-        Lab,
-        Homework,
-        Calculation,
-        Controlwork,
-        Exam
-    }
+
     public class Test : ModelBase
     {
         private int id;
@@ -24,7 +14,6 @@ namespace WpfApp.Models
         private int maxScore;
         private int subjectId;
         private DateTime eventDate;
-        private WorkType workType;
 
         private Subject subject;
         private List<Grade> grades;
@@ -79,16 +68,6 @@ namespace WpfApp.Models
             }
         }
 
-        public WorkType WorkType
-        {
-            get => workType;
-            set
-            {
-                workType = value;
-                OnPropertyChanged(nameof(WorkType));
-            }
-        }
-
         public List<Grade> Grades
         {
             get => grades;
@@ -109,5 +88,9 @@ namespace WpfApp.Models
             }
         }
 
+        public override string ToString()
+        {
+            return $"{Id}. {Theme}. Max: {MaxScore}";
+        }
     }
 }

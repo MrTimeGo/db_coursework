@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp.Models;
 using WpfApp.Views;
 
 namespace WpfApp
@@ -24,6 +26,15 @@ namespace WpfApp
         public MainWindow()
         {
             InitializeComponent();
+            
+            UniversityContext.Instance.Students.Load();
+            UniversityContext.Instance.Grades.Load();
+            UniversityContext.Instance.Subjects.Load();
+            UniversityContext.Instance.Tests.Load();
+            UniversityContext.Instance.Groups.Load();
+            UniversityContext.Instance.Teachers.Load();
+
+
             Main.Content = new NavigationPage();
         }
     }

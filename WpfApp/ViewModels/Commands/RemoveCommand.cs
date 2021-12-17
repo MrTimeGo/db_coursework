@@ -10,9 +10,9 @@ namespace WpfApp.ViewModels.Commands
 {
     public class RemoveCommand : ICommand
     {
-        ICUDService service;
+        IService service;
 
-        public RemoveCommand(ICUDService service)
+        public RemoveCommand(IService service)
         {
             this.service = service;
         }

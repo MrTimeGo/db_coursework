@@ -11,11 +11,9 @@ namespace WpfApp.Models
         private int id;
         private int score;
         private int studentId;
-        private int verifiedBy;
         private int testId;
 
         private Student student;
-        private Teacher teacher;
         private Test test;
 
         public int Id
@@ -48,16 +46,6 @@ namespace WpfApp.Models
             }
         }
 
-        public int VerifiedBy
-        {
-            get => verifiedBy;
-            set
-            {
-                verifiedBy = value;
-                OnPropertyChanged(nameof(VerifiedBy));
-            }
-        }
-
         public int TestId
         {
             get => testId;
@@ -78,16 +66,6 @@ namespace WpfApp.Models
             }
         }
 
-        public Teacher Teacher
-        {
-            get => teacher;
-            set
-            {
-                teacher = value;
-                OnPropertyChanged(nameof(Teacher));
-            }
-        }
-
         public Test Test
         {
             get => test;
@@ -96,6 +74,11 @@ namespace WpfApp.Models
                 test = value;
                 OnPropertyChanged(nameof(Test));
             }
+        }
+
+        public override string ToString()
+        {
+            return $"{Id}. {Score}";
         }
     }
 }

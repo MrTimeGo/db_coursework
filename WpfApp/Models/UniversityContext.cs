@@ -36,14 +36,11 @@ namespace WpfApp.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasPostgresEnum<Position>();
-            modelBuilder.HasPostgresEnum<WorkType>();
+            modelBuilder.HasPostgresExtension("tablefunc");
+
 
             modelBuilder.Entity<Student>(s =>
             {
-                s.Property(s => s.Id)
-                .UseHiLo();
-
                 s.HasOne(s => s.Group)
                 .WithMany(g => g.Students)
                 .HasForeignKey(s => s.GroupId);
@@ -75,10 +72,6 @@ namespace WpfApp.Models
                 .WithMany(s => s.Grades)
                 .HasForeignKey(g => g.StudentId);
 
-                g.HasOne(g => g.Teacher)
-                .WithMany(t => t.Grades)
-                .HasForeignKey(g => g.VerifiedBy);
-
                 g.HasOne(g => g.Test)
                 .WithMany(t => t.Grades)
                 .HasForeignKey(g => g.TestId);
@@ -86,10 +79,6 @@ namespace WpfApp.Models
 
             modelBuilder.Entity<Teacher>(t =>
             {
-                t.HasMany(t => t.Grades)
-                .WithOne(g => g.Teacher)
-                .OnDelete(DeleteBehavior.Cascade);
-
                 t.HasMany(t => t.Subjects)
                 .WithOne(s => s.Teacher)
                 .OnDelete(DeleteBehavior.Cascade);

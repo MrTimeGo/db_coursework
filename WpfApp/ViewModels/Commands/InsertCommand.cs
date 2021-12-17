@@ -5,14 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using WpfApp.Services;
+using WpfApp.Views;
+using WpfApp.Views.TeacherViews;
 
 namespace WpfApp.ViewModels.Commands
 {
-    public class InsertCommand : ICommand
+    public class InsertCommand<TDialog> : ICommand where TDialog : IDialog, new()
     {
-        ICUDService service;
+        IService service;
 
-        public InsertCommand(ICUDService service)
+        public InsertCommand(IService service)
         {
             this.service = service;
         }
@@ -26,7 +28,15 @@ namespace WpfApp.ViewModels.Commands
 
         public void Execute(object? parameter)
         {
-            throw new NotImplementedException();
+            IDialog dialog = new TDialog();
+            dialog.DoValidate = true;
+            dialog.Service = service;
+            dialog.ShowDialog();
+            
+            if (dialog.Result == null)
+                return;
+
+            service.Insert(dialog.Result);
         }
     }
 }
