@@ -113,16 +113,17 @@ namespace WpfApp.Services
             {
                 query = query.Where(s => s.FullName == student.FullName);
             }
-            if (student.BirthDate != DateTime.MinValue)
+            if (student.BirthDate != DateTime.MinValue || student.BirthDate != default)
             {
-                query = query.Where(s => s.BirthDate == student.BirthDate);
+                query = query.Where(s => s.BirthDate >= student.BirthDate);
             }
             if (student.GroupId > 0)
             {
                 query = query.Where(s => s.GroupId == student.GroupId);
             }
 
-            return query.ToArray();
+
+            return query.OrderBy(s => s.FullName).ToArray();
         }
     }
 }

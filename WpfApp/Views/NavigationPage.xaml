@@ -25,6 +25,11 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <Button Content="&#128295;" Grid.Column="4" Grid.Row="0"
+                HorizontalAlignment="Right" Margin="0,20,20,0"
+                Height="48" Width="48" FontSize="32"
+                Click="Service_Click"/>
+
         <TextBlock Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" Margin="0,0,0,72" Text="Grading &amp; control system" FontSize="50" TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold"/>
 
 

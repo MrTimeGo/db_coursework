@@ -18,18 +18,70 @@ namespace WpfApp.Models
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Test> Tests { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=University;Username=postgres;Password=Artik2003");
+        public string ConnectionString { get; set; }
 
-        private UniversityContext()
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            => optionsBuilder.UseNpgsql(ConnectionString);
+
+        public UniversityContext(string connectionString)
         {
+            ConnectionString = connectionString;
             Database.EnsureCreated();
+        }
+
+        public void CreateSubscription()
+        {
+            var result = -1;
+
+            using (var command = this.Database.GetDbConnection().CreateCommand())
+            {
+                command.CommandText = "SELECT COUNT(*) FROM pg_subscription";
+                this.Database.OpenConnection();
+                using (var reader = command.ExecuteReader())
+                    if (reader.Read())
+                        result = reader.GetInt32(0);
+                this.Database.CloseConnection();
+            }
+
+            if (result == 0)
+                this.Database.ExecuteSqlRaw("CREATE SUBSCRIPTION logical_sub\n" +
+                                                "CONNECTION 'host=localhost port=5432 user=postgres password=Artik2003 dbname=University'\n" +
+                                                "PUBLICATION logical_pub\n" +
+                                                "WITH(create_slot = false, slot_name = 'logical_slot');");
         }
 
 
         static UniversityContext()
         { 
-            Instance = new UniversityContext();
+            Instance = new UniversityContext("Host=localhost;Port=5432;Database=University;Username=postgres;Password=Artik2003");
+
+            var result = -1;
+
+            using (var command = Instance.Database.GetDbConnection().CreateCommand())
+            {
+                command.CommandText = "SELECT COUNT(*) FROM pg_publication";
+                Instance.Database.OpenConnection();
+                using (var reader = command.ExecuteReader())
+                    if (reader.Read())
+                        result = reader.GetInt32(0);
+                Instance.Database.CloseConnection();
+            }
+
+            if (result == 0)
+                Instance.Database.ExecuteSqlRaw("CREATE PUBLICATION logical_pub FOR ALL TABLES;");
+
+            using (var command = Instance.Database.GetDbConnection().CreateCommand())
+            {
+                command.CommandText = "SELECT COUNT(*) FROM pg_replication_slots";
+                Instance.Database.OpenConnection();
+                using (var reader = command.ExecuteReader())
+                    if (reader.Read())
+                        result = reader.GetInt32(0);
+                Instance.Database.CloseConnection();
+            }
+
+            if (result == 0)
+                Instance.Database.ExecuteSqlRaw("SELECT * FROM pg_create_logical_replication_slot('logical_slot', 'pgoutput');");
         }
         public static UniversityContext Instance { get; }
 

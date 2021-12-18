@@ -121,11 +121,11 @@ namespace WpfApp.Services
             {
                 query = query.Where(g => grade.Score == g.Score);
             }
-            if (grade.StudentId >= 0)
+            if (grade.StudentId > 0)
             {
                 query = query.Where(g => g.StudentId == grade.StudentId);
             }
-            if (grade.TestId >= 0)
+            if (grade.TestId > 0)
             {
                 query = query.Where(g => grade.TestId == g.TestId);
             }

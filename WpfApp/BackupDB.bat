@@ -1,0 +1,1 @@
+pg_dump "host = localhost port = 5432 dbname = University user = postgres password = Artik2003" > D:\projects\db_coursework\WpfApp\Backups\backup%1.sql

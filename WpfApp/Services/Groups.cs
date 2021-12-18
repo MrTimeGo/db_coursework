@@ -101,11 +101,11 @@ namespace WpfApp.Services
             {
                 query = query.Where(g => g.Code == group.Code);
             }
-            if (group.StartEducation != DateTime.MinValue)
+            if (group.StartEducation != DateTime.MinValue && group.StartEducation != default)
             {
                 query = query.Where(g => g.StartEducation == group.StartEducation);
             }
-            if (group.EndEducation != DateTime.MinValue)
+            if (group.EndEducation != DateTime.MinValue && group.EndEducation != default)
             {
                 query = query.Where(g => g.EndEducation == group.EndEducation);
             }

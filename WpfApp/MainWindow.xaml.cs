@@ -26,6 +26,9 @@ namespace WpfApp
         public MainWindow()
         {
             InitializeComponent();
+
+            UniversityContext replica = new UniversityContext("Host=localhost;Port=5432;Database=UniversityReplica;Username=postgres;Password=Artik2003");
+            replica.CreateSubscription();
             
             UniversityContext.Instance.Students.Load();
             UniversityContext.Instance.Grades.Load();
