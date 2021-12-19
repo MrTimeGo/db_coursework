@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp.Views.GroupViews"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="GroupAnalyticsDialog" Height="450" Width="800" d:DataContext="{d:DesignInstance local:GroupAnalyticsDialog}">
+        Title="GroupAnalyticsDialog" Height="720" Width="1080" d:DataContext="{d:DesignInstance local:GroupAnalyticsDialog}">
     <Grid>
         <lvc:CartesianChart Series="{Binding SeriesCollection}" Background="LightYellow">
             <lvc:CartesianChart.AxisX>

@@ -1,13 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Npgsql;
+﻿using MathNet.Numerics.Statistics;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using WpfApp.Models;
-using MathNet.Numerics.Statistics;
 
 namespace WpfApp.Services
 {
@@ -55,11 +52,11 @@ namespace WpfApp.Services
         public void InsertRandom(int amount)
         {
             Random rnd = new Random();
-            for(int i = 0; i < amount; i++)
+            for (int i = 0; i < amount; i++)
             {
                 Context.Add(new Teacher()
                 {
-                    FullName = RandomString(rnd.Next(8,13), rnd),
+                    FullName = RandomString(rnd.Next(8, 13), rnd),
                     Position = (Position)rnd.Next(5)
                 });
             }

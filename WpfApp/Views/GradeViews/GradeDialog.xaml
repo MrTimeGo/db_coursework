@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp.Views.GradeViews"
         mc:Ignorable="d"
-        Title="GradeInsertDialog" Height="450" Width="500" Loaded="Window_Loaded">
+        Title="GradeInsertDialog" Height="470" Width="500" Loaded="Window_Loaded">
     <Window.Background>
         <ImageBrush ImageSource="./../../Resources/main.jpg"/>
     </Window.Background>
@@ -30,7 +30,7 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="insert" Grid.Column="1" Grid.Row="1" Margin="0,0,0,30"
+        <TextBlock Text="grade" Grid.Column="1" Grid.Row="1" Margin="0,0,0,30"
                    FontSize="50"/>
 
         <Label Content="Score" Grid.Column="1" Grid.Row="2" Margin="0,0,20,10"
@@ -42,6 +42,7 @@
 
         <TextBox Name="ScoreBox" Grid.Column="2" Grid.Row="2"
                  Width="300" Height="40" Margin="0,0,0,10"
+                 FontSize="28"
                  PreviewTextInput="NumberValidationTextBox"/>
         <ComboBox Name="StudentBox" Grid.Column="2" Grid.Row="3"
                  Width="300" Height="40" Margin="0,0,0,10"/>

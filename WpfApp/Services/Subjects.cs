@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MathNet.Numerics.Statistics;
 using Microsoft.EntityFrameworkCore;
-using Npgsql;
+using System;
+using System.Collections;
+using System.Linq;
+using System.Threading.Tasks;
 using WpfApp.Models;
-using MathNet.Numerics.Statistics;
 
 namespace WpfApp.Services
 {
     public class Subjects : IService
-    { 
+    {
         public UniversityContext Context { get; set; }
 
         public Subjects(UniversityContext context)

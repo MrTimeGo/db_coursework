@@ -1,11 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Npgsql;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WpfApp.Models;
 
 namespace WpfApp.Models
 {
@@ -45,43 +38,47 @@ namespace WpfApp.Models
 
             if (result == 0)
                 this.Database.ExecuteSqlRaw("CREATE SUBSCRIPTION logical_sub\n" +
-                                                "CONNECTION 'host=localhost port=5432 user=postgres password=Artik2003 dbname=University'\n" +
+                                                "CONNECTION 'host=localhost port=5432 user=postgres password=Artik2003 dbname=university'\n" +
                                                 "PUBLICATION logical_pub\n" +
                                                 "WITH(create_slot = false, slot_name = 'logical_slot');");
         }
 
-
-        static UniversityContext()
-        { 
-            Instance = new UniversityContext("Host=localhost;Port=5432;Database=University;Username=postgres;Password=Artik2003");
-
+        public void CreatePublication()
+        {
             var result = -1;
 
-            using (var command = Instance.Database.GetDbConnection().CreateCommand())
+            using (var command = this.Database.GetDbConnection().CreateCommand())
             {
                 command.CommandText = "SELECT COUNT(*) FROM pg_publication";
-                Instance.Database.OpenConnection();
+                this.Database.OpenConnection();
                 using (var reader = command.ExecuteReader())
                     if (reader.Read())
                         result = reader.GetInt32(0);
-                Instance.Database.CloseConnection();
+                this.Database.CloseConnection();
             }
 
             if (result == 0)
-                Instance.Database.ExecuteSqlRaw("CREATE PUBLICATION logical_pub FOR ALL TABLES;");
+                this.Database.ExecuteSqlRaw("CREATE PUBLICATION logical_pub FOR ALL TABLES;");
 
-            using (var command = Instance.Database.GetDbConnection().CreateCommand())
+            using (var command = this.Database.GetDbConnection().CreateCommand())
             {
                 command.CommandText = "SELECT COUNT(*) FROM pg_replication_slots";
-                Instance.Database.OpenConnection();
+                this.Database.OpenConnection();
                 using (var reader = command.ExecuteReader())
                     if (reader.Read())
                         result = reader.GetInt32(0);
-                Instance.Database.CloseConnection();
+                this.Database.CloseConnection();
             }
 
             if (result == 0)
-                Instance.Database.ExecuteSqlRaw("SELECT * FROM pg_create_logical_replication_slot('logical_slot', 'pgoutput');");
+                this.Database.ExecuteSqlRaw("SELECT * FROM pg_create_logical_replication_slot('logical_slot', 'pgoutput');");
+        }
+
+
+        static UniversityContext()
+        {
+            Instance = new UniversityContext("Host=localhost;Port=5432;Database=university;Username=postgres;Password=Artik2003");
+            Instance.CreatePublication();
         }
         public static UniversityContext Instance { get; }
 

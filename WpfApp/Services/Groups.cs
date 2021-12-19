@@ -1,11 +1,9 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Npgsql;
 using WpfApp.Models;
 
 namespace WpfApp.Services
@@ -82,7 +80,7 @@ namespace WpfApp.Services
         {
             Group group = entity as Group;
             ArgumentNullException.ThrowIfNull(group);
-            
+
             var regex = new System.Text.RegularExpressions.Regex(@"^[A-Z]{2}-[0-9]{2}$");
             if (!regex.IsMatch(group.Code))
                 throw new ArgumentException("Code was provided wrong");
@@ -121,8 +119,8 @@ namespace WpfApp.Services
                 .Select(g => new GroupAnalyseResult()
                 {
                     GroupCode = g.Code,
-                    AverageScore = g.Students.Average(
-                    s => s.Grades.Average(g => g.Score / (decimal)g.Test.MaxScore))
+                    AverageScore = g.Students.Any() ?  g.Students.Average(
+                    s => s.Grades.Any() ? s.Grades.Average(g => g.Score / (decimal)g.Test.MaxScore) : 0 )  : 0
                 }).OrderBy(o => o.AverageScore).ToList();
         }
     }

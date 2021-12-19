@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using WpfApp.Models;
 using WpfApp.Services;
 
@@ -58,7 +49,7 @@ namespace WpfApp.Views.GradeViews
             Test test = TestBox.SelectedItem as Test;
 
             Grade grade = new Grade()
-            { 
+            {
                 Score = string.IsNullOrEmpty(ScoreBox.Text) ? -1 : int.Parse(ScoreBox.Text),
                 StudentId = student == null ? -1 : student.Id,
                 TestId = test == null ? -1 : test.Id,

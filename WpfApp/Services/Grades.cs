@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using WpfApp.Models;
-using MathNet.Numerics.Distributions;
-using System.Collections;
+﻿using MathNet.Numerics.Distributions;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections;
+using System.Linq;
+using System.Threading.Tasks;
+using WpfApp.Models;
 
 namespace WpfApp.Services
 {
@@ -94,7 +91,7 @@ namespace WpfApp.Services
 
             return (int)Math.Round(ratio * maxScore);
         }
-        
+
         public void ValidateModel(object entity)
         {
             Grade grade = entity as Grade;

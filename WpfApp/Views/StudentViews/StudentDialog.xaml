@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp.Views.StudentViews"
         mc:Ignorable="d"
-        Title="StudentInsertDialog" Height="450" Width="500" Loaded="Window_Loaded">
+        Title="StudentInsertDialog" Height="470" Width="520" Loaded="Window_Loaded">
     <Window.Background>
         <ImageBrush ImageSource="./../../Resources/main.jpg"/>
     </Window.Background>
@@ -41,7 +41,8 @@
                FontSize="28"/>
 
         <TextBox Name="FullNameBox" Grid.Column="2" Grid.Row="2"
-                 Width="300" Height="40" Margin="0,0,0,10"/>
+                 Width="300" Height="40" Margin="0,0,0,10"
+                 FontSize="28"/>
         <DatePicker Name="BirthDayBox" Grid.Column="2" Grid.Row="3"
                  Width="300" Height="40" Margin="0,0,0,10"/>
         <ComboBox Name="GroupBox" Grid.Column="2" Grid.Row="4"

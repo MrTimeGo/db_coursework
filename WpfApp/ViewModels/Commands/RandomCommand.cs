@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using WpfApp.Services;
 using WpfApp.Views;
@@ -33,7 +30,14 @@ namespace WpfApp.ViewModels.Commands
             if (dialog.Result == null)
                 return;
 
-            service.InsertRandom((int)dialog.Result);
+            try
+            {
+                service.InsertRandom((int)dialog.Result);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

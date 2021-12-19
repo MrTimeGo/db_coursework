@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Input;
 using WpfApp.Models;
 using WpfApp.Services;
-using RegularExpressions = System.Text.RegularExpressions;
 
 namespace WpfApp.Views.GroupViews
 {
@@ -56,7 +54,7 @@ namespace WpfApp.Views.GroupViews
             {
                 CodeBox.Text = group.Code;
                 StartEducationBox.SelectedDate = group.StartEducation;
-                EndEducationBox.SelectedDate= group.EndEducation;
+                EndEducationBox.SelectedDate = group.EndEducation;
             }
         }
     }

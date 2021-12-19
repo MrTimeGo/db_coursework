@@ -1,10 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Diagnostics;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using WpfApp.Models;
-using WpfApp.Services;
 using WpfApp.Views.GradeViews;
 using WpfApp.Views.GroupViews;
 using WpfApp.Views.StudentViews;

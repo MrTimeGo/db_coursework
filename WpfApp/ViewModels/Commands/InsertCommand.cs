@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using WpfApp.Services;
 using WpfApp.Views;
-using WpfApp.Views.TeacherViews;
 
 namespace WpfApp.ViewModels.Commands
 {
@@ -32,7 +27,7 @@ namespace WpfApp.ViewModels.Commands
             dialog.DoValidate = true;
             dialog.Service = service;
             dialog.ShowDialog();
-            
+
             if (dialog.Result == null)
                 return;
 

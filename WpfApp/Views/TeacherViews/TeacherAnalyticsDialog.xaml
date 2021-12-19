@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp.Views.TeacherViews"
         mc:Ignorable="d"
-        Title="TeacherAnalyticsDialog" Height="450" Width="800">
+        Title="TeacherAnalyticsDialog" Height="400" Width="600">
     <Window.Background>
         <ImageBrush ImageSource="./../../Resources/main.jpg"/>
     </Window.Background>

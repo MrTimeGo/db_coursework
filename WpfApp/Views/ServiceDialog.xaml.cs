@@ -1,18 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Win32;
+using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using WpfApp.Models;
 using WpfApp.Services;
 
@@ -49,7 +43,34 @@ namespace WpfApp.Views
 
         private void Restore_Click(object sender, RoutedEventArgs e)
         {
-            // to do
+            OpenFileDialog dialog = new OpenFileDialog();
+
+            if (dialog.ShowDialog() == true)
+            {
+                if (!File.Exists(dialog.FileName))
+                    return;
+                if (!dialog.FileName.EndsWith(".sql"))
+                    return;
+
+                UniversityContext.Instance.Database.CloseConnection();
+
+                var process = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = "./../../../RestoreDB.bat",
+                        Arguments = dialog.FileName,
+                        UseShellExecute = false,
+                        CreateNoWindow = true,
+                        Verb = "runas"
+                    }
+                };
+
+                process.Start();
+                process.WaitForExit();
+                MessageBox.Show("DB was restored. Restart the app.");
+                Application.Current.Shutdown();
+            }
         }
 
         private void Performance_Click(object sender, RoutedEventArgs e)
@@ -125,7 +146,7 @@ namespace WpfApp.Views
             service.Context.Database.ExecuteSqlRaw("DROP INDEX grades_score_index");
         }
 
-        private void PerformanceGroups(Dictionary<string, long> dick) 
+        private void PerformanceGroups(Dictionary<string, long> dick)
         {
             Groups service = new Groups(UniversityContext.Instance);
             var searchParameters = new Group()
@@ -155,7 +176,7 @@ namespace WpfApp.Views
             service.Context.Database.ExecuteSqlRaw("DROP INDEX groups_code_index");
         }
 
-        private void PerformanceTeachers(Dictionary<string, long> dick) 
+        private void PerformanceTeachers(Dictionary<string, long> dick)
         {
             Teachers service = new Teachers(UniversityContext.Instance);
             var searchParameters = new Teacher()
@@ -185,7 +206,7 @@ namespace WpfApp.Views
             service.Context.Database.ExecuteSqlRaw("DROP INDEX teachers_fullname_index");
         }
 
-        private void PerformanceSubjects(Dictionary<string, long> dick) 
+        private void PerformanceSubjects(Dictionary<string, long> dick)
         {
             Subjects service = new Subjects(UniversityContext.Instance);
             var searchParameters = new Subject()
@@ -215,7 +236,7 @@ namespace WpfApp.Views
             service.Context.Database.ExecuteSqlRaw("DROP INDEX subjects_name_index");
         }
 
-        private void PerformanceTests(Dictionary<string, long> dick) 
+        private void PerformanceTests(Dictionary<string, long> dick)
         {
             Tests service = new Tests(UniversityContext.Instance);
             var searchParameters = new Test()
