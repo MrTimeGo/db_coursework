@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="PerformanceResult" Height="450" Width="800">
     <Grid>
-        <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Left" Background="LightYellow">
+        <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Left" Background="White">
             <lvc:CartesianChart.AxisX>
                 <lvc:Axis Title="Tables" Labels="{Binding BarLabels}"></lvc:Axis>
             </lvc:CartesianChart.AxisX>

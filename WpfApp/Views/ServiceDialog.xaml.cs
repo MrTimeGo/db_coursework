@@ -36,9 +36,11 @@ namespace WpfApp.Views
                 }
             };
 
+            Stopwatch stopwatch = Stopwatch.StartNew();
             process.Start();
             process.WaitForExit();
-            MessageBox.Show("Backup was created");
+            stopwatch.Stop();
+            MessageBox.Show($"Backup was created in {stopwatch.ElapsedMilliseconds} ms.");
         }
 
         private void Restore_Click(object sender, RoutedEventArgs e)
@@ -66,9 +68,11 @@ namespace WpfApp.Views
                     }
                 };
 
+                Stopwatch stopwatch = Stopwatch.StartNew();
                 process.Start();
                 process.WaitForExit();
-                MessageBox.Show("DB was restored. Restart the app.");
+                stopwatch.Stop();
+                MessageBox.Show($"DB was restored in {stopwatch.ElapsedMilliseconds} ms. Restart the app.");
                 Application.Current.Shutdown();
             }
         }

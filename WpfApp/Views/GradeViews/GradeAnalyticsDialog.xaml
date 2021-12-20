@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="GradeAnalyticsDialog" Height="720" Width="1080" d:DataContext="{d:DesignInstance local:GradeAnalyticsDialog}">
     <Grid>
-        <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Left" Background="LightYellow">
+        <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Left" Background="White">
             <lvc:CartesianChart.AxisX>
                 <lvc:Axis Title="Scores" Labels="{Binding BarLabels}"></lvc:Axis>
             </lvc:CartesianChart.AxisX>

@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="GroupAnalyticsDialog" Height="720" Width="1080" d:DataContext="{d:DesignInstance local:GroupAnalyticsDialog}">
     <Grid>
-        <lvc:CartesianChart Series="{Binding SeriesCollection}" Background="LightYellow">
+        <lvc:CartesianChart Series="{Binding SeriesCollection}" Background="White">
             <lvc:CartesianChart.AxisX>
                 <lvc:Axis Title="Groups" Labels="{Binding BarLabels}" LabelFormatter="{Binding LabelFormatter}"></lvc:Axis>
             </lvc:CartesianChart.AxisX>
